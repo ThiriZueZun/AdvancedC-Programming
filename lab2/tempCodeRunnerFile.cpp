@@ -1,0 +1,2 @@
+char *ptrA, *ptrB;
+    ptrA 
