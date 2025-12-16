@@ -7,7 +7,7 @@ int main(){
     std::ifstream file("subject.txt");
 
     if (!file.is_open()) {
-        std::cerr << "Error: Could not open Subject" << std::endl;
+        std::cerr << "Error: Could not open subject.txt" << std::endl;
         return 1;
     }
 
@@ -24,4 +24,5 @@ int main(){
 
     file.close();
     return 0;
+
 }
