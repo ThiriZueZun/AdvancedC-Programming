@@ -1,13 +1,14 @@
-#include<iostream>
-#include<fstream>
-#include<string>
+#include <iostream>
+#include <fstream>
+#include <string>
 
-int main(){
+int main() {
     int pos, pos2;
-    std::ifstream file("subject.txt");
-
+    std::ifstream file("Subject.txt");
+    
+    // Check if file opened successfully
     if (!file.is_open()) {
-        std::cerr << "Error: Could not open subject.txt" << std::endl;
+        std::cerr << "Error: Could not open Subject.txt" << std::endl;
         return 1;
     }
 
@@ -33,25 +34,26 @@ int main(){
         }
 
         pos = lowerLine.find("love");
-        pos2 = lowerLine.find("love", pos + 1); // this will always return npos since "Love" != "love"
+        
         if (pos >= line.length()) {
             std::cout << "'love' not found in the line." << std::endl;
         } else {
             std::cout << "'love' found at position: " << pos << std::endl;
         }
 
-        //tokenize the line into words
+        // tokenize the line into words
         size_t start = 0;
-        size_t end = lowerLine.find(' ');
-        bool foundword = false;
+        size_t end = line.find(' ');
+        bool foundWord = false;
         while (end != std::string::npos) {
-            std::string word = lowerLine.substr(start, end - start);
+            std::string word = line.substr(start, end - start);
             start = end + 1;
             end = lowerLine.find(' ', start);
             std::cout << "Token: " << word << std::endl;
         }
-    }
 
+    }
+    
     file.close();
     return 0;
 }
