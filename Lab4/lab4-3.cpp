@@ -2,39 +2,32 @@
 #include <string>
 using namespace std;
 
-const int N = 10;   // จำนวนคน
-const int DIGITS = 13; // เลขบัตร 13 หลัก
+const int N = 10;   
+const int DIGITS = 13; 
 
-// Counting Sort ตามหลักที่กำหนด
 void countingSort(string arr[], int pos) {
     string output[N];
     int count[10] = {0};
 
-    // นับจำนวนตัวเลขในหลัก pos
     for (int i = 0; i < N; i++) {
         int digit = arr[i][pos] - '0';
         count[digit]++;
     }
 
-    // สะสมค่า (prefix sum)
     for (int i = 1; i < 10; i++)
         count[i] += count[i - 1];
 
-    // จัดเรียง (จากหลังไปหน้าเพื่อให้ stable)
     for (int i = N - 1; i >= 0; i--) {
         int digit = arr[i][pos] - '0';
         output[count[digit] - 1] = arr[i];
         count[digit]--;
     }
 
-    // คัดลอกกลับ
     for (int i = 0; i < N; i++)
         arr[i] = output[i];
 }
 
-// Radix Sort
 void radixSort(string arr[]) {
-    // เริ่มจากหลักขวาสุด (12) ไปซ้ายสุด (0)
     for (int pos = DIGITS - 1; pos >= 0; pos--) {
         countingSort(arr, pos);
     }
