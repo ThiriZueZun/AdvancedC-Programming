@@ -49,7 +49,7 @@ int main() {
 
     radixSort(id);
 
-    cout << "เรียงเลขบัตรประชาชน (น้อย → มาก):\n";
+    cout << "Sort ID Card Numbers(Asending):\n";
     for (int i = 0; i < N; i++) {
         cout << id[i] << endl;
     }
